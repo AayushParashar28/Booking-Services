@@ -1,10 +1,18 @@
 require('dotenv').config();
 const express = require("express");
+const connect = require("./src/config/database.config");
+
+
+const app = express();
 
 const setupserver = async function() {
-    const app = express();
+    
 
+    
     app.use(express.json());
+
+    await connect();
+    console.log("Database started");
 
     const PORT = process.env.PORT ;
 
